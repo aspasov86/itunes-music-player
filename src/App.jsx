@@ -8,7 +8,7 @@ const App = () => (
   <Router>
     <Switch>
       <Route path="/search" component={Search} />
-      <Route path="/track/:trackName" component={Track} />
+      <Route path="/track/:trackId" component={Track} />
       <Redirect to="/search" />
     </Switch>
   </Router>
