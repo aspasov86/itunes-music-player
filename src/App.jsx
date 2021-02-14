@@ -1,16 +1,17 @@
-import { useEffect } from 'react';
-import axios from 'axios';
+import {
+  BrowserRouter as Router, Switch, Route, Redirect
+} from 'react-router-dom';
+import Search from './pages/Search';
+import Track from './pages/Track';
 
-function App() {
-  useEffect(() => {
-    axios.get('/search/?term="nirvana"').then(console.log);
-  }, []);
-
-  return (
-    <div>
-      test
-    </div>
-  );
-}
+const App = () => (
+  <Router>
+    <Switch>
+      <Route path="/search" component={Search} />
+      <Route path="/track/:trackName" component={Track} />
+      <Redirect to="/search" />
+    </Switch>
+  </Router>
+);
 
 export default App;
