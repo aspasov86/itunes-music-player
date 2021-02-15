@@ -1,0 +1,12 @@
+.input {
+    input {
+        border-radius: 500rem !important;
+    }
+}
+
+.track {
+    &:hover {
+        background: lightgray;
+        opacity: .5;
+    }
+}

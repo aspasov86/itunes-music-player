@@ -1,32 +1,12 @@
 import PropTypes from 'prop-types';
-import { useMemo, useState } from 'react';
+import moment from 'moment';
+import Button from 'semantic-ui-react/dist/commonjs/elements/Button/Button';
+import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
+import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import AudioPlayer from 'react-h5-audio-player';
+import CoverImage from '../components/CoverImage/CoverImage';
 import 'react-h5-audio-player/lib/styles.css';
-
-const getLargerImage = (src) => {
-  const splitSrc = src.split('/');
-  splitSrc[splitSrc.length - 1] = '550x550bb.jpg';
-  return splitSrc.join('/');
-};
-
-const CoverImage = ({ src }) => {
-  const [loaded, setLoaded] = useState(false);
-  const onLoad = () => setLoaded(true);
-  return (
-    <>
-      <div style={{
-        display: loaded ? 'none' : 'block', width: 550, height: 550, textAlign: 'center'
-      }}
-      >
-        Loading...
-      </div>
-      <img src={src} alt="cover" onLoad={onLoad} style={{ display: loaded ? 'inline-block' : 'none' }} />
-    </>
-  );
-};
-
-CoverImage.propTypes = { src: PropTypes.string.isRequired };
 
 const Track = ({ match, history }) => {
   const tracks = useSelector(store => store.tracks);
@@ -41,20 +21,23 @@ const Track = ({ match, history }) => {
   const onClickPrevious = () => history.push(`/track/${previousTrack}`);
   const onBack = () => history.push('/search');
   return (
-    <div style={{
-      background: 'lightgray',
-      clipPath: 'polygon(100% 10%, 0% 100%, 100% 100%)'
-    }}
-    >
-      <button type="button" onClick={onBack}>Back to Search</button>
-      <div>
-        <div>{selectedTrack.trackName}</div>
+    <div style={{ margin: '1rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <Button
+          onClick={onBack}
+          basic
+          content="Back to Search"
+          icon={<Icon name="play" flipped="horizontally" />}
+          labelPosition="left"
+          size="tiny"
+        />
+        <Icon name="sound" size="large" />
       </div>
-      <div style={{ width: 580 }}>
+      <div style={{ margin: '1rem 0' }}>
         <AudioPlayer
           header={(
-            <div style={{ textAlign: 'center' }}>
-              <CoverImage src={getLargerImage(selectedTrack.artworkUrl100)} />
+            <div>
+              <CoverImage src={selectedTrack.artworkUrl100} size={250} />
             </div>
           )}
           src={selectedTrack.previewUrl}
@@ -66,6 +49,16 @@ const Track = ({ match, history }) => {
           customAdditionalControls={[]}
           crossOrigin="anonymous"
         />
+      </div>
+      <div>
+        <div style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>{selectedTrack.trackName}</div>
+        <div>{selectedTrack.collectionName}</div>
+        <div>{selectedTrack.artistName}</div>
+        <div>
+          <span>{selectedTrack.primaryGenreName}</span>
+          <span> - </span>
+          <span>{moment(selectedTrack.releaseDate).format('MM/DD/YYYY')}</span>
+        </div>
       </div>
     </div>
   );
