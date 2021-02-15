@@ -1,16 +1,15 @@
-import axios from 'axios';
 import { uniqBy } from 'lodash';
-
-const fetchTracks = async searchTerm => axios.get(`/search/?term="${searchTerm}"`);
+import { SEARCH_INIT, SET_TRACKS } from './actions';
+import fetchTracks from '../services/service';
 
 const searchForTracks = searchTerm => async (dispatch) => {
-  dispatch({ type: 'SEARCH_INIT', payload: searchTerm });
+  dispatch({ type: SEARCH_INIT, payload: searchTerm });
   let tracks = [];
   try {
-    const res = await fetchTracks(searchTerm);
-    tracks = uniqBy(res.data.results, 'trackId').filter(({ trackId }) => trackId);
+    const results = await fetchTracks(searchTerm);
+    tracks = uniqBy(results.filter(({ trackId }) => trackId), 'trackId');
   } finally {
-    dispatch({ type: 'SET_TRACKS', payload: tracks });
+    dispatch({ type: SET_TRACKS, payload: tracks });
   }
 };
 

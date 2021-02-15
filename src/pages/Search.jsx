@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import searchForTracks from '../redux/thunk';
+import { CLEAR } from '../redux/actions';
 
 const Search = ({ history }) => {
   const [searchString, setSearchString] = useState('');
@@ -16,7 +17,7 @@ const Search = ({ history }) => {
   const onSearchChange = event => setSearchString(event.target.value);
   const onSearch = () => dispatch(searchForTracks(searchString));
   const onClear = () => {
-    dispatch({ type: 'CLEAR' });
+    dispatch({ type: CLEAR });
     setSearchString('');
   };
   return (

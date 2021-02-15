@@ -1,5 +1,6 @@
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { SEARCH_INIT, SET_TRACKS, CLEAR } from './actions';
 
 const initialState = {
   searchTerm: '',
@@ -9,20 +10,19 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'SEARCH_INIT':
+    case SEARCH_INIT:
       return {
         searchTerm: action.payload,
         loading: true,
         tracks: []
       };
-    case 'SET_TRACKS':
+    case SET_TRACKS:
       return {
         ...state,
         loading: false,
         tracks: action.payload
       };
-    case 'CLEAR':
-      console.log('triggered');
+    case CLEAR:
       return initialState;
     default:
       return state;

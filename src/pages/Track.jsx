@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
@@ -9,6 +9,24 @@ const getLargerImage = (src) => {
   splitSrc[splitSrc.length - 1] = '550x550bb.jpg';
   return splitSrc.join('/');
 };
+
+const CoverImage = ({ src }) => {
+  const [loaded, setLoaded] = useState(false);
+  const onLoad = () => setLoaded(true);
+  return (
+    <>
+      <div style={{
+        display: loaded ? 'none' : 'block', width: 550, height: 550, textAlign: 'center'
+      }}
+      >
+        Loading...
+      </div>
+      <img src={src} alt="cover" onLoad={onLoad} style={{ display: loaded ? 'inline-block' : 'none' }} />
+    </>
+  );
+};
+
+CoverImage.propTypes = { src: PropTypes.string.isRequired };
 
 const Track = ({ match, history }) => {
   const tracks = useSelector(store => store.tracks);
@@ -23,16 +41,20 @@ const Track = ({ match, history }) => {
   const onClickPrevious = () => history.push(`/track/${previousTrack}`);
   const onBack = () => history.push('/search');
   return (
-    <div>
+    <div style={{
+      background: 'lightgray',
+      clipPath: 'polygon(100% 10%, 0% 100%, 100% 100%)'
+    }}
+    >
       <button type="button" onClick={onBack}>Back to Search</button>
       <div>
         <div>{selectedTrack.trackName}</div>
       </div>
-      <div style={{ width: 700 }}>
+      <div style={{ width: 580 }}>
         <AudioPlayer
           header={(
             <div style={{ textAlign: 'center' }}>
-              <img src={getLargerImage(selectedTrack.artworkUrl100)} alt="cover" />
+              <CoverImage src={getLargerImage(selectedTrack.artworkUrl100)} />
             </div>
           )}
           src={selectedTrack.previewUrl}
