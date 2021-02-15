@@ -12,8 +12,8 @@ const CoverImage = ({ src, size, ...restProps }) => {
   const [loaded, setLoaded] = useState(false);
   const onLoad = () => setLoaded(true);
   return (
-    <div style={{ textAlign: 'center' }}>
-      <Placeholder style={{ display: loaded ? 'none' : 'block', height: size, width: size }}>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <Placeholder style={{ display: loaded ? 'none' : 'block', width: size, height: size }}>
         <Placeholder.Image />
       </Placeholder>
       <img

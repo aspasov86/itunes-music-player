@@ -1,0 +1,26 @@
+.topLine {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    button:global(.button.ui.labeled) {
+        font-weight: 900 !important;
+        box-shadow: none !important;
+        padding-left: 2rem !important;
+        i {
+            background: white !important;
+            margin-left: -.5rem !important;
+        }    
+    }
+    button {
+        border-radius: 0 !important;
+        background: rgba(0,0,0,.6) !important;
+        color: white !important;
+        margin-right: 0 !important;
+    }
+}
+
+.shareBtns {
+    button {
+        margin: .2rem;
+    }
+}

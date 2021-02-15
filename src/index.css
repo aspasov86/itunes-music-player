@@ -394,10 +394,10 @@
 }
 
 body {
-	font-family: "HCo Archer SSm";
+	font-family: "HCo Archer SSm" !important;
 	font-size: .85rem;
-	letter-spacing: 0.04em;
-	font-weight: bold;
+	letter-spacing: 0.08em;
+	font-weight: 700;
 }
 
 ::-webkit-scrollbar {
