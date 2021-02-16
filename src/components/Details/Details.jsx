@@ -4,15 +4,26 @@ import InfoLine from '../InfoLine/InfoLine';
 import styles from './Details.module.scss';
 
 const Details = ({ track }) => (
-  <div>
-    <InfoLine className={styles.trackName} info={track.trackName} />
-    <InfoLine info={track.collectionName} />
-    <InfoLine info={track.artistName} />
+  <div className="trackDetails">
     <div>
-      <InfoLine info={track.primaryGenreName} htmlTag="span" />
-      <span>{track.primaryGenreName}</span>
-      <span> - </span>
-      <InfoLine info={moment(track.releaseDate).format('MM/DD/YYYY')} htmlTag="span" type="date" />
+      <div className="trackLabel">Track name</div>
+      <InfoLine className={styles.trackName} info={track.trackName} />
+    </div>
+    <div>
+      <div className="trackLabel">Album</div>
+      <InfoLine info={track.collectionName} className="collectionName" />
+    </div>
+    <div>
+      <div className="trackLabel">Artist</div>
+      <InfoLine info={track.artistName} className="artistName" />
+    </div>
+    <div>
+      <div className="trackLabel">Genre / Release date</div>
+      <div className="genreReleaseDate">
+        <InfoLine info={track.primaryGenreName} htmlTag="span" />
+        <span> &#x2606; </span>
+        <InfoLine info={moment(track.releaseDate).format('MM/DD/YYYY')} htmlTag="span" type="date" />
+      </div>
     </div>
   </div>
 );

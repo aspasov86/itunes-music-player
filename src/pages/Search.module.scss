@@ -2,16 +2,25 @@
 
 .toolRow {
     height: 4vh;
-    margin: 0 .3rem;
     display: flex;
     justify-content: space-between;
 }
 .list {
     height: 81vh;
     overflow-y: scroll;
-    margin: 1vh .3rem 0;
-    @media #{$tablet} {
+    margin-top: 1vh;
+    @media #{$tablet}, #{$laptop}, #{$laptop_l}, #{$wide} {
         display: flex;
+        justify-content: space-between;
         flex-wrap: wrap;
+        padding-right: 2rem;
+    }
+    a:global(.ui.card):last-child {
+        @media #{$laptop}  {
+            margin-right: 34%;
+        }
+        @media #{$laptop_l}, #{$wide} {
+            margin-right: 37%;
+        }
     }
 }

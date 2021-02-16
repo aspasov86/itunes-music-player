@@ -5,6 +5,9 @@ import searchForTracks from '../redux/thunk';
 import Search from '../components/Search/Search';
 import Sort from '../components/Sort/Sort';
 import Item from '../components/Item/Item';
+import CardItem from '../components/Item/CardItem';
+import useScreenWidth from '../hooks/screenWidth/useScreenWidth';
+import Layout from '../components/Layout/Layout';
 import styles from './Search.module.scss';
 
 const SearchPage = ({ history }) => {
@@ -12,11 +15,11 @@ const SearchPage = ({ history }) => {
     searchTerm, tracks, loading, noResults
   } = useSelector(store => store);
   const dispatch = useDispatch();
-
+  const { isLaptopDevice, isDesktopDevice } = useScreenWidth();
   const itemClickHandler = trackId => () => history.push(`/track/${trackId}`);
   const searchHandler = searchString => () => dispatch(searchForTracks(searchString));
   return (
-    <div>
+    <Layout>
       <div className={styles.toolRow}>
         <Search
           searchTerm={searchTerm}
@@ -27,9 +30,21 @@ const SearchPage = ({ history }) => {
       </div>
       <div className={styles.list}>
         {noResults && <Segment basic>No results found</Segment>}
-        {tracks && tracks.map(track => <Item key={track.trackId} track={track} itemClickHandler={itemClickHandler} />)}
+        {tracks && tracks.map(track => ((isLaptopDevice || isDesktopDevice) ? (
+          <CardItem
+            key={track.trackId}
+            track={track}
+            itemClickHandler={itemClickHandler}
+          />
+        ) : (
+          <Item
+            key={track.trackId}
+            track={track}
+            itemClickHandler={itemClickHandler}
+          />
+        )))}
       </div>
-    </div>
+    </Layout>
   );
 };
 

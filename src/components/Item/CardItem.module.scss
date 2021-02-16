@@ -1,0 +1,24 @@
+.image {
+    width: 290px !important;
+    height: 290px !important;
+}
+
+.name {
+    letter-spacing: initial !important;
+}
+.artist {
+    font-style: italic !important;
+    margin-top: .5rem !important;
+}
+
+.left {
+    float: left;
+    color: black;
+}
+
+.right {
+    float: right;
+    color: black;
+    font-weight: 900;
+    font-size: 1.2rem;
+}

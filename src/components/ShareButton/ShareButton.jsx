@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button/Button';
 import Popup from 'semantic-ui-react/dist/commonjs/modules/Popup/Popup';
 import PropTypes from 'prop-types';
@@ -9,30 +10,39 @@ import {
   TwitterShareButton,
   TwitterIcon
 } from 'react-share';
+import useScreenWidth from '../../hooks/screenWidth/useScreenWidth';
 import styles from './ShareButton.module.scss';
 
-const ShareButton = ({ trackViewUrl }) => (
-  <Popup
-    on="click"
-    hoverable
-    position="bottom right"
-    trigger={<Button content="Share" />}
-    closeOnPortalMouseLeave={false}
-    content={(
-      <div className={styles.shareBtns}>
-        <FacebookShareButton url={trackViewUrl}>
-          <FacebookIcon size={32} />
-        </FacebookShareButton>
-        <LinkedinShareButton url={trackViewUrl}>
-          <LinkedinIcon size={32} />
-        </LinkedinShareButton>
-        <TwitterShareButton url={trackViewUrl}>
-          <TwitterIcon size={32} />
-        </TwitterShareButton>
-      </div>
-    )}
-  />
-);
+const ShareButton = ({ trackViewUrl }) => {
+  const { isLaptopDevice, isDesktopDevice } = useScreenWidth();
+
+  const shareBtnsSize = useMemo(() => ((isLaptopDevice || isDesktopDevice) ? 40 : 35), [isLaptopDevice, isDesktopDevice]);
+
+  const shareButtons = (
+    <div className={styles.shareBtns}>
+      <FacebookShareButton url={trackViewUrl}>
+        <FacebookIcon size={shareBtnsSize} />
+      </FacebookShareButton>
+      <LinkedinShareButton url={trackViewUrl}>
+        <LinkedinIcon size={shareBtnsSize} />
+      </LinkedinShareButton>
+      <TwitterShareButton url={trackViewUrl}>
+        <TwitterIcon size={shareBtnsSize} />
+      </TwitterShareButton>
+    </div>
+  );
+
+  return !(isLaptopDevice || isDesktopDevice) ? (
+    <Popup
+      on="click"
+      hoverable
+      position="bottom right"
+      trigger={<Button content="Share" className={styles.share} />}
+      closeOnPortalMouseLeave={false}
+      content={shareButtons}
+    />
+  ) : shareButtons;
+};
 
 ShareButton.defaultProps = { trackViewUrl: '' };
 

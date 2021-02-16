@@ -17,15 +17,50 @@
             margin-left: -.5rem !important;
         }    
     }
-    button {
-        border-radius: 0 !important;
-        background: $primary_color!important;
-        color: $secondary_color !important;
-        margin-right: 0 !important;
-    }
 }
 
 .playerWrap {
-    margin: 1rem 0;
     border: 2px solid $primary_color;
+    max-width: 500px !important;
+    background: #fff !important;
+    :global(.rhap_container) {
+        box-shadow: none !important;
+    }
+}
+
+.content {
+    margin: 1rem 0;
+    @media #{$tablet}, #{$laptop}, #{$laptop_l}, #{$wide} {
+        display: flex;
+    }
+    :global(.trackDetails) {
+        margin-top: 2rem;
+        :global(.trackLabel) {
+            display: none;
+        }
+        @media #{$tablet}, #{$laptop}, #{$laptop_l}, #{$wide} {
+            margin-top: 0;
+            margin-left: 2rem;
+            width: -webkit-fill-available;
+            div {
+                height: 25%;
+                font-size: 3rem;
+                line-height: 3rem;
+            }
+            :global(.trackLabel) {
+                display: block;
+                font-size: 1.2rem;
+                margin-bottom: .5rem;
+            }
+            :global(.collectionName) {
+                font-size: 2.2rem;
+            }
+            :global(.artistName) {
+                font-size: 2.7rem;
+            }
+            :global(.genreReleaseDate) {
+                font-size: 2rem;
+            }
+        }
+    }
 }

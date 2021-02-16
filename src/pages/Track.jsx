@@ -8,6 +8,7 @@ import FadeIn from '../components/FadeIn/FadeIn';
 import Details from '../components/Details/Details';
 import ShareButton from '../components/ShareButton/ShareButton';
 import useTracksData from '../hooks/tracksData/useTracksData';
+import Layout from '../components/Layout/Layout';
 import 'react-h5-audio-player/lib/styles.css';
 import styles from './Track.module.scss';
 
@@ -18,7 +19,7 @@ const Track = ({ match }) => {
   } = useTracksData(tracks, match.params.trackId);
   return (
     <FadeIn>
-      <div className={styles.trackPage}>
+      <Layout className={styles.trackPage}>
         <div className={styles.topLine}>
           <Button
             onClick={goBack}
@@ -30,21 +31,23 @@ const Track = ({ match }) => {
           />
           <ShareButton trackViewUrl={selectedTrack.trackViewUrl} />
         </div>
-        <div className={styles.playerWrap}>
-          <AudioPlayer
-            header={<CoverImage src={selectedTrack.artworkUrl100} size={250} />}
-            src={selectedTrack.previewUrl}
-            volume={0.2}
-            showSkipControls
-            onClickPrevious={onClickPrevious}
-            onClickNext={onClickNext}
-            showJumpControls={false}
-            customAdditionalControls={[]}
-            crossOrigin="anonymous"
-          />
+        <div className={styles.content}>
+          <div className={styles.playerWrap}>
+            <AudioPlayer
+              header={<CoverImage src={selectedTrack.artworkUrl100} size={250} />}
+              src={selectedTrack.previewUrl}
+              volume={0.2}
+              showSkipControls
+              onClickPrevious={onClickPrevious}
+              onClickNext={onClickNext}
+              showJumpControls={false}
+              customAdditionalControls={[]}
+              crossOrigin="anonymous"
+            />
+          </div>
+          <Details track={selectedTrack} />
         </div>
-        <Details track={selectedTrack} />
-      </div>
+      </Layout>
     </FadeIn>
   );
 };
