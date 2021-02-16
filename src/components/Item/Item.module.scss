@@ -1,13 +1,13 @@
 .track {
     display: flex;
-    margin-bottom: .5rem;
+    margin: .5rem 0;
     &:hover {
         background: lightgray;
         opacity: .5;
     }
 }
 
-.elipsis250 {
+.elipsis {
     margin-left: .5rem;
     div {
         width: 250px;

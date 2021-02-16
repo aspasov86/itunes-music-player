@@ -1,38 +1,33 @@
 import {
   BrowserRouter as Router, Switch, Route, Redirect
 } from 'react-router-dom';
-import Menu from 'semantic-ui-react/dist/commonjs/collections/Menu/Menu';
-import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
+import { Suspense } from 'react';
+import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './redux/store';
+import Menu from './components/Menu/Menu';
 import Search from './pages/Search';
 import Track from './pages/Track';
 
 const App = () => (
-  <div>
-    <Menu
-      secondary
-      size="large"
-      style={{
-        height: '6vh', marginBottom: '1vh', borderBottom: '2px solid rgba(0,0,0,.6)', background: 'rgba(0,0,0,.6)'
-      }}
-    >
-      <Menu.Item header style={{ color: '#fff' }}>
-        <Icon name="apple" size="big" flipped="horizontally" />
+  <Suspense fallback={null}>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
         <div>
-          iTunes
-          <br />
-          {' '}
-          music player
+          <Menu />
+          <main>
+            <Router>
+              <Switch>
+                <Route path="/search" component={Search} />
+                <Route path="/track/:trackId" component={Track} />
+                <Redirect to="/search" />
+              </Switch>
+            </Router>
+          </main>
         </div>
-      </Menu.Item>
-    </Menu>
-    <Router>
-      <Switch>
-        <Route path="/search" component={Search} />
-        <Route path="/track/:trackId" component={Track} />
-        <Redirect to="/search" />
-      </Switch>
-    </Router>
-  </div>
+      </PersistGate>
+    </Provider>
+  </Suspense>
 );
 
 export default App;

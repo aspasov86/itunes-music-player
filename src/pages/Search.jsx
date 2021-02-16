@@ -9,7 +9,7 @@ import styles from './Search.module.scss';
 
 const SearchPage = ({ history }) => {
   const {
-    searchTerm, tracks, loading, searchPerformed
+    searchTerm, tracks, loading, noResults
   } = useSelector(store => store);
   const dispatch = useDispatch();
 
@@ -26,7 +26,7 @@ const SearchPage = ({ history }) => {
         <Sort />
       </div>
       <div className={styles.list}>
-        {!tracks.length && searchPerformed && <Segment basic>No results found</Segment>}
+        {noResults && <Segment basic>No results found</Segment>}
         {tracks && tracks.map(track => <Item key={track.trackId} track={track} itemClickHandler={itemClickHandler} />)}
       </div>
     </div>

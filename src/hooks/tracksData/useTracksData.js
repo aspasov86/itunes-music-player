@@ -14,8 +14,6 @@ function useTracksData(tracks, trackIdParam) {
   const nextTrackId = useMemo(() => {
     let trackId = null;
     if (trackNum > -1) {
-      console.log('trackNum', trackNum);
-      console.log('tracks.length', tracks.length);
       trackId = (trackNum + 1 === tracks.length ? tracks[0].trackId : tracks[trackNum + 1].trackId);
     }
     return trackId;

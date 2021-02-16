@@ -8,7 +8,7 @@ import {
 const initialState = {
   searchTerm: '',
   loading: false,
-  searchPerformed: false,
+  noResults: false,
   sortBy: 'trackPrice',
   sortType: 'desc',
   tracks: []
@@ -21,13 +21,14 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         searchTerm: action.payload,
         loading: true,
+        noResults: false,
         tracks: []
       };
     case SET_TRACKS:
       return {
         ...state,
         loading: false,
-        searchPerformed: true,
+        noResults: !action.payload.length,
         tracks: orderBy(action.payload, [state.sortBy], [state.sortType])
       };
     case SORT:
@@ -47,5 +48,5 @@ const rootReducer = (state = initialState, action) => {
 export default persistReducer({
   key: 'search',
   storage,
-  whitelist: ['searchTerm', 'tracks', 'sortBy', 'sortType']
+  whitelist: ['searchTerm', 'tracks', 'sortBy', 'sortType', 'noResults']
 }, rootReducer);

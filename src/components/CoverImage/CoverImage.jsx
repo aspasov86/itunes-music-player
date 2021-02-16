@@ -21,7 +21,7 @@ const CoverImage = ({ src, size, ...restProps }) => {
         src={getLargerImage(src, size)}
         alt="cover"
         onLoad={onLoad}
-        style={{ display: loaded ? 'inline-block' : 'none' }}
+        style={{ display: loaded ? 'inline-block' : 'none', width: size, height: size }}
         {...restProps}
       />
     </div>

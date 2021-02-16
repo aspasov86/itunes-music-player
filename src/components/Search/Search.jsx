@@ -1,14 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input/Input';
+import { useDispatch } from 'react-redux';
+import { CLEAR } from '../../redux/actions';
 import styles from './Search.module.scss';
 
 const Search = ({ searchTerm, searchHandler, loading }) => {
   const [searchString, setSearchString] = useState('');
+  const previousSearchString = useRef(searchString);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setSearchString(searchTerm);
   }, []);
+
+  useEffect(() => {
+    if (previousSearchString.current && !searchString) dispatch({ type: CLEAR });
+    return () => { previousSearchString.current = searchString; };
+  }, [searchString]);
 
   const onSearchChange = (event, { value }) => setSearchString(value);
 
