@@ -15,7 +15,7 @@
         pointer-events: all !important;
         cursor: pointer !important;
         &:hover {
-            background: #808080 !important;
+            background: $hover_btn_color !important;
         }
     }
 }

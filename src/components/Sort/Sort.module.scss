@@ -10,20 +10,18 @@
   }
   :global(.textWrap) {
     display: flex;
-    @media #{$tablet} {
+    @media #{$tablet}, #{$laptop} {
       display: block !important;
       margin-left: auto;
-      align-self: center;
       font-weight: 900;
+    }
+    @media #{$laptop_l}, #{$wide} {
+      align-items: center;
+      height: 100%;
     }
   }
   div:global(.dropdown) {
     width: 5rem !important;
-  }
-  button {
-    @media #{$tablet}, #{$laptop}, #{$laptop_l}, #{$wide} {
-      font-size: 1.3rem !important;
-    }
   }
 }
 .sortBy {
@@ -39,8 +37,17 @@
 
 .sortTypeBtn {
   @extend .btn;
+  height: 100% !important;
+  &:hover {
+    background: $hover_btn_color !important;
+  }
   @media #{$tablet}, #{$laptop}, #{$laptop_l}, #{$wide} {
+    width: 4rem !important;
     box-shadow: $box-shadow !important;
+  }
+  @media #{$laptop}, #{$laptop_l}, #{$wide} {
+    line-height: 1rem !important;
+    font-size: 1rem !important;
   }
 }
 
@@ -49,4 +56,7 @@
   width: 4rem !important;
   z-index: 9 !important;
   box-shadow: $box-shadow !important;
+  &:hover {
+    background: $hover_btn_color !important;
+  }
 }

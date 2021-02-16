@@ -6,6 +6,9 @@
     color: $secondary_color !important;
     margin-right: 0 !important;
     box-shadow: $box-shadow !important;
+    &:hover {
+        background: $hover_btn_color !important;
+    }
 }
 
 .shareBtns {

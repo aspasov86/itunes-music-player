@@ -15,7 +15,10 @@
         i {
             background: $secondary_color !important;
             margin-left: -.5rem !important;
-        }    
+        }
+        &:hover {
+            background-color: inherit !important;
+        }
     }
 }
 

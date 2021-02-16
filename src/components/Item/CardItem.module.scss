@@ -1,3 +1,10 @@
+.card {
+    border-radius: unset !important;
+    img:global(.ui.image) {
+        border-radius: unset !important;
+    }
+}
+
 .image {
     width: 290px !important;
     height: 290px !important;

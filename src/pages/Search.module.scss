@@ -1,12 +1,12 @@
 @import '../constants/variables.scss';
 
 .toolRow {
-    height: 4vh;
+    height: 5vh;
     display: flex;
     justify-content: space-between;
 }
 .list {
-    height: 81vh;
+    height: 82vh;
     overflow-y: scroll;
     margin-top: 1vh;
     @media #{$tablet}, #{$laptop}, #{$laptop_l}, #{$wide} {
@@ -16,11 +16,15 @@
         padding-right: 2rem;
     }
     a:global(.ui.card):last-child {
+        margin-top: inherit !important;
         @media #{$laptop}  {
             margin-right: 34%;
         }
         @media #{$laptop_l}, #{$wide} {
             margin-right: 37%;
         }
+    }
+    a:global(.ui.card):first-child {
+        margin-top: inherit !important;
     }
 }
