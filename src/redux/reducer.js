@@ -28,8 +28,8 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        noResults: !action.payload.length,
-        tracks: orderBy(action.payload, [state.sortBy], [state.sortType])
+        noResults: !action.payload.tracks.length && !action.payload.error,
+        tracks: orderBy(action.payload.tracks, [state.sortBy], [state.sortType])
       };
     case SORT:
       return {
