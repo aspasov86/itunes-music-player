@@ -16,7 +16,7 @@
         padding-right: 2rem;
     }
     a:global(.ui.card):last-child {
-        margin-top: inherit !important;
+        margin-bottom: inherit !important;
         @media #{$laptop}  {
             margin-right: 34%;
         }
