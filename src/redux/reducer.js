@@ -1,5 +1,5 @@
 import { persistReducer } from 'redux-persist';
-import { orderBy } from 'lodash';
+import orderBy from 'lodash.orderby';
 import storage from 'redux-persist/lib/storage';
 import {
   SEARCH_INIT, SET_TRACKS, CLEAR, SORT

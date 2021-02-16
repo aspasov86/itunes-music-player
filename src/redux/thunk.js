@@ -1,4 +1,4 @@
-import { uniqBy } from 'lodash';
+import uniqBy from 'lodash.uniqby';
 import { SEARCH_INIT, SET_TRACKS } from './actions';
 import fetchTracks from '../services/service';
 
