@@ -1,3 +1,7 @@
+.trackPage {
+    margin: 1rem;
+}
+
 .topLine {
     display: flex;
     justify-content: space-between;
@@ -19,8 +23,7 @@
     }
 }
 
-.shareBtns {
-    button {
-        margin: .2rem;
-    }
+.playerWrap {
+    margin: 1rem 0;
+    border: 2px solid rgba(0,0,0,.6);
 }

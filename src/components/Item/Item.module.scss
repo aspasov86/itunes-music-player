@@ -1,0 +1,19 @@
+.track {
+    display: flex;
+    margin-bottom: .5rem;
+    &:hover {
+        background: lightgray;
+        opacity: .5;
+    }
+}
+
+.elipsis250 {
+    margin-left: .5rem;
+    div {
+        width: 250px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        font-weight: 900;
+    }
+}

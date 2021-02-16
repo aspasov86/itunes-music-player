@@ -1,11 +1,16 @@
 import { persistReducer } from 'redux-persist';
+import { orderBy } from 'lodash';
 import storage from 'redux-persist/lib/storage';
-import { SEARCH_INIT, SET_TRACKS, CLEAR } from './actions';
+import {
+  SEARCH_INIT, SET_TRACKS, CLEAR, SORT
+} from './actions';
 
 const initialState = {
   searchTerm: '',
   loading: false,
   searchPerformed: false,
+  sortBy: 'trackPrice',
+  sortType: 'desc',
   tracks: []
 };
 
@@ -23,7 +28,14 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         searchPerformed: true,
-        tracks: action.payload
+        tracks: orderBy(action.payload, [state.sortBy], [state.sortType])
+      };
+    case SORT:
+      return {
+        ...state,
+        sortBy: action.payload.sortBy,
+        sortType: action.payload.sortType,
+        tracks: orderBy(state.tracks, [action.payload.sortBy], [action.payload.sortType])
       };
     case CLEAR:
       return initialState;
@@ -32,4 +44,8 @@ const rootReducer = (state = initialState, action) => {
   }
 };
 
-export default persistReducer({ key: 'search', storage, whitelist: ['searchTerm', 'tracks'] }, rootReducer);
+export default persistReducer({
+  key: 'search',
+  storage,
+  whitelist: ['searchTerm', 'tracks', 'sortBy', 'sortType']
+}, rootReducer);

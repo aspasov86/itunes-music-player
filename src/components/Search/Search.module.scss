@@ -1,0 +1,18 @@
+.input {
+    width: 80% !important;
+    input {
+        border: 2px solid rgba(0,0,0,.6) !important;
+        border-radius: 0 !important;
+        font-weight: 900 !important;
+    }
+    i {
+        color: white !important;
+        background: rgba(0,0,0,.6) !important;
+        opacity: 1 !important;
+        pointer-events: all !important;
+        cursor: pointer !important;
+        &:hover {
+            background: grey !important;
+        }
+    }
+}

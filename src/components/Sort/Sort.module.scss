@@ -1,0 +1,18 @@
+.multi {
+  display: flex;
+  align-items: baseline;
+  width: 13rem;
+  div:global(.dropdown) {
+    width: 5rem !important;
+  }
+}
+.sortBy {
+  margin-right: .2rem !important;
+}
+
+.btn {
+  border-radius: 0 !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  color: #fff !important;
+  margin-right: 0 !important;
+}

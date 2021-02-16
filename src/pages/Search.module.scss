@@ -1,47 +1,11 @@
-.input {
-    input {
-        border: 2px solid rgba(0,0,0,.6) !important;
-        border-radius: 0 !important;
-        font-weight: 900 !important;
-        width: 80% !important;
-    }
-    i {
-        color: white !important;
-        background: rgba(0,0,0,.6) !important;
-        opacity: 1 !important;
-        pointer-events: all !important;
-        cursor: pointer !important;
-        &:hover {
-            background: grey !important;
-        }
-    }
+.toolRow {
+    height: 5vh;
+    margin: 0 .3rem;
+    display: flex;
+    justify-content: space-between;
 }
-
-.track {
-    &:hover {
-        background: lightgray;
-        opacity: .5;
-    }
-}
-
-.elipsis250 {
-    div {
-        width: 250px;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-        font-weight: 900;
-    }
-}
-
-.multi {
-  display: flex;
-  align-items: baseline;
-  width: 13rem;
-  div:global(.dropdown) {
-    width: 5rem !important;
-  }
-}
-.sortBy {
-  margin-right: .2rem !important;
+.list {
+    height: 85vh;
+    overflow-y: scroll;
+    margin: 1vh .3rem 0;
 }
