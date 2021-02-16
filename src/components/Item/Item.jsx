@@ -19,7 +19,7 @@ const Item = ({ track, itemClickHandler }) => (
       <InfoLine info={track.artistName} />
       <div>
         <InfoLine info={track.primaryGenreName} htmlTag="span" />
-        <span> - </span>
+        <span> &#9733; </span>
         <InfoLine info={moment(track.releaseDate).format('MMMM DD, YYYY')} htmlTag="span" type="date" />
       </div>
       <InfoLine info={moment(track.trackTimeMillis).format('mm:ss')} type="date" />
