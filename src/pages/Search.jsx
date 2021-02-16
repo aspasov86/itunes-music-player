@@ -14,10 +14,12 @@ const SearchPage = ({ history }) => {
   const {
     searchTerm, tracks, loading, noResults
   } = useSelector(store => store);
-  const dispatch = useDispatch();
   const { isLaptopDevice, isDesktopDevice } = useScreenWidth();
+  const dispatch = useDispatch();
+
   const itemClickHandler = trackId => () => history.push(`/track/${trackId}`);
   const searchHandler = searchString => () => dispatch(searchForTracks(searchString));
+
   return (
     <Layout>
       <div className={styles.toolRow}>

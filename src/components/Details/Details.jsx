@@ -22,7 +22,7 @@ const Details = ({ track }) => (
       <div className="genreReleaseDate">
         <InfoLine info={track.primaryGenreName} htmlTag="span" />
         <span> &#x2606; </span>
-        <InfoLine info={moment(track.releaseDate).format('MM/DD/YYYY')} htmlTag="span" type="date" />
+        <InfoLine info={moment(track.releaseDate).format('MMMM DD, YYYY')} htmlTag="span" type="date" />
       </div>
     </div>
   </div>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import useScreenWidth from '../../hooks/screenWidth/useScreenWidth';
 import SortControl from './SortControl';
 import { SORT } from '../../redux/actions';
+import { ASCENDING, DESCENDING } from '../../constants/constants';
 import styles from './Sort.module.scss';
 
 const Sort = () => {
@@ -14,7 +15,7 @@ const Sort = () => {
   const dispatch = useDispatch();
   const onSortTypeChange = () => dispatch({
     type: SORT,
-    payload: { sortType: sortType === 'desc' ? 'asc' : 'desc', sortBy }
+    payload: { sortType: sortType === DESCENDING ? ASCENDING : DESCENDING, sortBy }
   });
   const onSortByChange = (event, { value }) => dispatch({ type: SORT, payload: { sortBy: value, sortType } });
 

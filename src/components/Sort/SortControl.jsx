@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import Button from 'semantic-ui-react/dist/commonjs/elements/Button/Button';
 import Dropdown from 'semantic-ui-react/dist/commonjs/modules/Dropdown/Dropdown';
+import { ASCENDING, DESCENDING } from '../../constants/constants';
 import styles from './Sort.module.scss';
 
 const SortControl = ({
@@ -21,7 +22,7 @@ const SortControl = ({
       />
     </div>
     <Button
-      icon={`long arrow alternate ${sortType === 'asc' ? 'down' : 'up'}`}
+      icon={`long arrow alternate ${sortType === ASCENDING ? 'down' : 'up'}`}
       onClick={onSortTypeChange}
       className={styles.sortTypeBtn}
     />
@@ -31,7 +32,7 @@ const SortControl = ({
 SortControl.propTypes = {
   sortBy: PropTypes.oneOf(['trackTimeMillis', 'trackPrice', 'primaryGenreName']).isRequired,
   onSortByChange: PropTypes.func.isRequired,
-  sortType: PropTypes.oneOf(['asc', 'desc']).isRequired,
+  sortType: PropTypes.oneOf([ASCENDING, DESCENDING]).isRequired,
   onSortTypeChange: PropTypes.func.isRequired
 };
 
