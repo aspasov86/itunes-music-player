@@ -1,3 +1,5 @@
+@import '../constants/variables.scss';
+
 .trackPage {
     margin: 1rem;
 }
@@ -11,19 +13,19 @@
         box-shadow: none !important;
         padding-left: 2rem !important;
         i {
-            background: white !important;
+            background: $secondary_color !important;
             margin-left: -.5rem !important;
         }    
     }
     button {
         border-radius: 0 !important;
-        background: rgba(0,0,0,.6) !important;
-        color: white !important;
+        background: $primary_color!important;
+        color: $secondary_color !important;
         margin-right: 0 !important;
     }
 }
 
 .playerWrap {
     margin: 1rem 0;
-    border: 2px solid rgba(0,0,0,.6);
+    border: 2px solid $primary_color;
 }

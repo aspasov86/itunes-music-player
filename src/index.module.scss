@@ -1,3 +1,5 @@
+@import './constants/variables.scss';
+
 @font-face {
 	font-family: 'HCo Archer SSm';
 	src:url('https://cdn.loveandlemons.com/wp-content/themes/loveandlemons5/fonts/hco_fonts/woff2/ArcherSSm-Light_Web.woff2') format('woff2'),
@@ -398,6 +400,7 @@ body {
 	font-size: .85rem;
 	letter-spacing: 0.08em;
 	font-weight: 700;
+	background: $secondary_color !important;
 }
 
 ::-webkit-scrollbar {
