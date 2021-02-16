@@ -1,11 +1,17 @@
+@import '../constants/variables.scss';
+
 .toolRow {
-    height: 5vh;
+    height: 4vh;
     margin: 0 .3rem;
     display: flex;
     justify-content: space-between;
 }
 .list {
-    height: 85vh;
+    height: 81vh;
     overflow-y: scroll;
     margin: 1vh .3rem 0;
+    @media #{$tablet} {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

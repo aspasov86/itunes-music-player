@@ -4,8 +4,26 @@
   display: flex;
   align-items: baseline;
   width: 13rem;
+  @media #{$tablet}, #{$laptop} {
+    align-items: center !important;
+    font-size: 1rem;
+  }
+  :global(.textWrap) {
+    display: flex;
+    @media #{$tablet} {
+      display: block !important;
+      margin-left: auto;
+      align-self: center;
+      font-weight: 900;
+    }
+  }
   div:global(.dropdown) {
     width: 5rem !important;
+  }
+  button {
+    @media #{$tablet}, #{$laptop}, #{$laptop_l}, #{$wide} {
+      font-size: 1.3rem !important;
+    }
   }
 }
 .sortBy {
@@ -17,4 +35,18 @@
   background: $primary_color !important;
   color: $secondary_color !important;
   margin-right: 0 !important;
+}
+
+.sortTypeBtn {
+  @extend .btn;
+  @media #{$tablet}, #{$laptop}, #{$laptop_l}, #{$wide} {
+    box-shadow: $box-shadow !important;
+  }
+}
+
+.sortIcon {
+  @extend .btn;
+  width: 4rem !important;
+  z-index: 9 !important;
+  box-shadow: $box-shadow !important;
 }

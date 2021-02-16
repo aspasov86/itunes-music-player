@@ -3,8 +3,8 @@
 .menu {
     height: 6vh !important;
     margin-bottom: 1vh !important;
-    border-bottom: 2px solid $primary_color !important;
     background: $primary_color !important;
+    box-shadow: $box_shadow !important;
     :global(.item) {
         color: $secondary_color !important;
     }

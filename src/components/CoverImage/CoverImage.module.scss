@@ -1,4 +1,9 @@
+@import '../../constants/variables.scss';
+
 .coverImage {
     display: flex;
     justify-content: center;
+    img {
+        box-shadow: $box_shadow !important;
+    }
 }
