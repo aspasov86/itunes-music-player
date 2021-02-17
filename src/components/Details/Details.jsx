@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import InfoLine from '../InfoLine/InfoLine';
 import styles from './Details.module.scss';
 
@@ -22,7 +21,7 @@ const Details = ({ track }) => (
       <div className="genreReleaseDate">
         <InfoLine info={track.primaryGenreName} htmlTag="span" />
         <span> &#x2606; </span>
-        <InfoLine info={moment(track.releaseDate).format('MMMM DD, YYYY')} htmlTag="span" type="date" />
+        <InfoLine info={track.releaseDate} htmlTag="span" type="date" />
       </div>
     </div>
   </div>

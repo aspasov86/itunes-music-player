@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import Card from 'semantic-ui-react/dist/commonjs/views/Card/Card';
 import Image from 'semantic-ui-react/dist/commonjs/elements/Image/Image';
-import moment from 'moment';
 import InfoLine from '../InfoLine/InfoLine';
 import { getLargerImageSrc } from '../../utlis/helpers';
 import styles from './CardItem.module.scss';
@@ -24,13 +23,13 @@ const CardItem = ({ track, itemClickHandler }) => (
         {' '}
         &#9733;
         {' '}
-        <InfoLine info={moment(track.releaseDate).format('MMMM DD, YYYY')} htmlTag="span" type="date" />
+        <InfoLine info={track.releaseDate} htmlTag="span" type="date" />
       </Card.Description>
     </Card.Content>
     <Card.Content extra>
       <InfoLine
-        info={moment(track.trackTimeMillis).format('mm:ss')}
-        type="date"
+        info={track.trackTimeMillis}
+        type="duration"
         className={styles.left}
       />
       <InfoLine info={track.trackPrice} type="price" className={styles.right} />

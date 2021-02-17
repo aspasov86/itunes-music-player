@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import PropTypes from 'prop-types';
-import moment from 'moment';
 import CoverImage from '../CoverImage/CoverImage';
 import InfoLine from '../InfoLine/InfoLine';
 import styles from './Item.module.scss';
@@ -20,9 +19,9 @@ const Item = ({ track, itemClickHandler }) => (
       <div>
         <InfoLine info={track.primaryGenreName} htmlTag="span" />
         <span> &#9733; </span>
-        <InfoLine info={moment(track.releaseDate).format('MMMM DD, YYYY')} htmlTag="span" type="date" />
+        <InfoLine info={track.releaseDate} htmlTag="span" type="date" />
       </div>
-      <InfoLine info={moment(track.trackTimeMillis).format('mm:ss')} type="date" />
+      <InfoLine info={track.trackTimeMillis} type="duration" />
       <InfoLine info={track.trackPrice} type="price" />
     </div>
   </div>
