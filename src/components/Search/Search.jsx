@@ -9,20 +9,29 @@ const Search = ({ searchTerm, searchHandler, loading }) => {
   const [searchString, setSearchString] = useState('');
   const previousSearchString = useRef(searchString);
   const dispatch = useDispatch();
+  const input = useRef();
 
   useEffect(() => {
+    // making search input ready for typing right away
+    input.current.inputRef.current.select();
+    // restoring the search input
     setSearchString(searchTerm);
   }, []);
 
   useEffect(() => {
+    // clear results on input string delete
     if (previousSearchString.current && !searchString) dispatch({ type: CLEAR });
     return () => { previousSearchString.current = searchString; };
   }, [searchString]);
 
   const onSearchChange = (event, { value }) => setSearchString(value);
-
+  const onKeyPress = (event) => {
+    if (event.key === 'Enter') searchHandler(searchString)();
+  };
   return (
     <Input
+      ref={input}
+      focus
       className={styles.input}
       size="big"
       loading={loading}
@@ -34,6 +43,7 @@ const Search = ({ searchTerm, searchHandler, loading }) => {
         onClick: searchHandler(searchString)
       }}
       onChange={onSearchChange}
+      onKeyPress={onKeyPress}
       placeholder="Search..."
     />
   );
