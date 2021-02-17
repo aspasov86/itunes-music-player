@@ -6,8 +6,12 @@ import { getLargerImageSrc } from '../../utlis/helpers';
 import styles from './CardItem.module.scss';
 
 const CardItem = ({ track, itemClickHandler }) => (
-  <Card onClick={itemClickHandler(track.trackId)} className={styles.card}>
-    <Image src={getLargerImageSrc(track.artworkUrl100, 290)} className={styles.image} />
+  <Card
+    onClick={itemClickHandler(track.trackId)}
+    className={styles.card}
+    data-testid="card"
+  >
+    <Image src={getLargerImageSrc(track.artworkUrl100, 290)} className={styles.image} alt="cover" />
     <Card.Content>
       <Card.Header className={styles.name}>
         <InfoLine info={track.trackName} contentOnly />

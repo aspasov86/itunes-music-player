@@ -7,6 +7,7 @@ import styles from './Item.module.scss';
 
 const Item = ({ track, itemClickHandler }) => (
   <div
+    data-testid="item"
     className={styles.track}
     key={track.trackId}
     onClick={itemClickHandler(track.trackId)}

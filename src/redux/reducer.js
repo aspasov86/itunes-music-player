@@ -3,18 +3,19 @@ import orderBy from 'lodash.orderby';
 import storage from 'redux-persist/lib/storage';
 import {
   SEARCH_INIT, SET_TRACKS, CLEAR, SORT
-} from './actions';
+} from './actionTypes';
+import { DESCENDING } from '../constants/constants';
 
 const initialState = {
   searchTerm: '',
   loading: false,
   noResults: false,
   sortBy: 'trackPrice',
-  sortType: 'desc',
+  sortType: DESCENDING,
   tracks: []
 };
 
-const rootReducer = (state = initialState, action) => {
+export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_INIT:
       return {

@@ -4,7 +4,7 @@ import Icon from 'semantic-ui-react/dist/commonjs/elements/Icon/Icon';
 import { useDispatch, useSelector } from 'react-redux';
 import useScreenWidth from '../../hooks/screenWidth/useScreenWidth';
 import SortControl from './SortControl';
-import { SORT } from '../../redux/actions';
+import { SORT } from '../../redux/actionTypes';
 import { ASCENDING, DESCENDING } from '../../constants/constants';
 import styles from './Sort.module.scss';
 
@@ -35,6 +35,7 @@ const Sort = () => {
       position="bottom right"
       trigger={(
         <Button
+          data-testid="sort"
           icon={<Icon name="sort amount up" size="large" />}
           className={styles.sortIcon}
         />

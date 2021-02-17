@@ -6,7 +6,7 @@ export const getLargerImageSrc = (src, size) => {
   return splitSrc.join('/');
 };
 
-const isValidTimeValue = timeValue => timeValue !== undefined && moment(timeValue).isValid();
+export const isValidTimeValue = timeValue => timeValue !== undefined && moment(timeValue).isValid();
 
 export const constructDuration = (trackTimeMillis) => {
   if (isValidTimeValue(trackTimeMillis)) {

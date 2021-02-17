@@ -22,6 +22,7 @@ const SortControl = ({
       />
     </div>
     <Button
+      data-testid="sortType"
       icon={`long arrow alternate ${sortType === ASCENDING ? 'down' : 'up'}`}
       onClick={onSortTypeChange}
       className={styles.sortTypeBtn}

@@ -1,5 +1,5 @@
 import uniqBy from 'lodash.uniqby';
-import { SEARCH_INIT, SET_TRACKS } from './actions';
+import { SEARCH_INIT, SET_TRACKS } from './actionTypes';
 import fetchTracks from '../services/service';
 
 const searchForTracks = searchTerm => async (dispatch) => {

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Input from 'semantic-ui-react/dist/commonjs/elements/Input/Input';
 import { useDispatch } from 'react-redux';
-import { CLEAR } from '../../redux/actions';
+import { CLEAR } from '../../redux/actionTypes';
 import styles from './Search.module.scss';
 
 const Search = ({ searchTerm, searchHandler, loading }) => {
@@ -40,7 +40,8 @@ const Search = ({ searchTerm, searchHandler, loading }) => {
         name: 'search',
         disabled: !searchString,
         size: 'large',
-        onClick: searchHandler(searchString)
+        onClick: searchHandler(searchString),
+        'data-testid': 'search'
       }}
       onChange={onSearchChange}
       onKeyPress={onKeyPress}
